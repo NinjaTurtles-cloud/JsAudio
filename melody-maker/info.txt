@@ -1,0 +1,14 @@
+Tutoriel pour apprendre a créer une ap de mélody en JS 
+https://www.youtube.com/watch?v=JNtuLw2fybo&ab_channel=RaduMariescu-Istodor
+
+On commence avec le classsique html, script.js style.css
+Dans le html le body a un canvas#myCanvas
+
+le body a une fonction main() a definir en JS
+
+Dans script.JS on commence par definir l'élement CANVAS dans une variable GLOBALS car nous devrond y acceder depuis plus partie du code. 
+
+Nous devons ensuite ajuster la taille de l'écran avec la function fiToScreen() ou on definis la largeur et la hauteur du Canvas
+
+Ensuite nous ajouton la fonction drawScene() En premier on définis le CANVAS context en 2D pour définir les methode qui vont etre dessiner sur le projet comme les notes de musique dont certaine seront entre 2 ligne de la partitions et d'autre chevaucheront les ligne de la partions. 
+Nous començn par definir l'espace entre chaque notes ( 2 par lignes pour celle qui sont sur les ligne de la partitions et celle qui sont entre 2 ligne ) 20 est une bonne ( chaqe espace est 5% du canvas ). 

@@ -1,0 +1,55 @@
+Merci a franck laboratory pour ce tutoriel
+https://www.youtube.com/watch?v=VXWvfrmpapI&ab_channel=Frankslaboratory
+
+I JavaScript & HTML canvas visualiser que nous allons frabriquer
+Pour les amoureux de la musique et de Javascript découvré La puissance de canvas et Vanila JavaScript en crént un visualiseur de fréquence Audio avec moi pour découvrir les base de l'Audio avec JS et pouvoir ensuite créer une application du type melodyMaker.
+
+II Coment jouer des fichier audio en JavaScript
+Pour commencer vous devez créez le classique html5: style.css script.js
+Inserer une div#boutton1 dans le html 
+un body{ black } dans le style css
+une constante button1 = get#boutton1 dans le script.js et un evenement au clique boutton1('click') avec une callback fonction qui contient le code pour jouer le fichier son.
+
+Ensuite il faut créer une nouvelle variable let audio1 = new Audio(). new est un mot clé séciale en JS et Audio est un constructeur de classe intégré qui servira a créer une nouvelle instance de classe audio en JS qui créera un nouvel HTML vierge ce qui est pareille qu'écrire une balise audio html dans notre index.html. Cet objet peut etre attaché a une page Web pour que l'utilisateur puisse interAgir avec ou il peut simplement rester hors ecran. 
+
+Pour que le son puisse etre jouer on doit définir une source a notre audio1.src qui contient le chemin d'une source sonore ( mp3, ogg, aiff, wav .... ). 
+Pour ce projet vous pouver prendre un échantillons sonores sur OpenGamesArt.com et choisir un son court et puissant pour voir une belle plage de frequence. 
+J'en choisis un, je l'enregistre et maintenant je place son chemin  dans audio1.src = ... Puis je vais dans l'evenementClique du button1 pour lire le son contenuu dans la variable audio1 avec la methode audio1.play(). 
+
+III Media event sur un element audio
+Et vous pouvez egalement prendre la variable audio1 et écouter l'evenement ('playing') et ('ended') Et on peut verifier avec un console.log quand le son et jouer et quand le son a fini d ejouer. 
+
+IV Jouer un son depuis une chaine de caractere base64
+Dans ce tutoriel vous avez vu les base du son en javascript et vous allez voir comment créer des visualiseurs audios. 
+Certains navigateur ne nous permette pas d'afficher des image depuis un fichier son pour des raison de securité. 
+Il faut dans un premier temps analyser le fichier pour avoir des infos sur les fréquences etc.
+On peut contourner ce probleme en convertissant un fichier audio en base64, malheuresement la chaine de caractere otenue est tres longue meme pour un son de quelques secondes.
+La 2e façon de contourner le probleme et de créer un element html d'upload de fichier 
+
+Rechercher sur google audioToBase64 pour convertir un fichier audio en base64
+
+Quand nous prenons notre objet audio1 le newaudio() créer un fichier audio en html vierge. 
+Et on définissait la source dans audio.src. 
+On pouvez en realité effacer le audio.src et envoyer le son directement dans l'objet new Audio('data:audio/x-wav;base64,maChaineBase64') ( Est ce que ça marche avec un URL ??? )
+
+
+V Généré du son avec la Web Api Audio
+
+VI JS Mettre en place un projet de visualiser audio
+
+VII Visualisation des frequences sonore avec FFT
+
+Un super site pour trouver des ressources sonore visuelle 
+https://opengameart.org/
+
+Convertir un fichier audio en base64
+https://base64.guru/converter/encode/audio
+
+La Web Audio API
+https://developer.mozilla.org/fr/docs/Web/API/Web_Audio_API
+
+Astuce
+Alt+Z permet de raccourci une ligne sur visual studiocode
+
+Couleur Hue c'est quoi ? 
+
