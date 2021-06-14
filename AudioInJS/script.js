@@ -16,13 +16,13 @@ button1.addEventListener('click', function(){
 });
 
 const button2 = document.getElementById('button2');
-button2.addEventListener('click', playSound);
-function playSound(){
-    const oscillator = audioCtx.createOscillator();
-    oscillator.connect(audioCtx.destination);
-    oscillator.type = 'triangle';
-    oscillator.start();
+button2.addEventListener('click', playSound); //Quand on clique sur le boutton 2 on active la fonction playsound
+function playSound(){ 
+    const oscillator = audioCtx.createOscillator(); //On créer un oscilliateur
+    oscillator.connect(audioCtx.destination); // on connecte l'osciliateur au haut parleur
+    oscillator.type = 'triangle'; // On prepare un son de type triangle
+    oscillator.start(); // on commnce a jouer le son
     setTimeout(function(){
-        oscillator.stop();
+        oscillator.stop(); // On arrete de jouer le son au bout de 1000ms
     }, 1000);
 }

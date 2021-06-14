@@ -5,10 +5,10 @@ I JavaScript & HTML canvas visualiser que nous allons frabriquer
 Pour les amoureux de la musique et de Javascript découvré La puissance de canvas et Vanila JavaScript en crént un visualiseur de fréquence Audio avec moi pour découvrir les base de l'Audio avec JS et pouvoir ensuite créer une application du type melodyMaker.
 
 II Coment jouer des fichier audio en JavaScript
-Pour commencer vous devez créez le classique html5: style.css script.js
+Pour commencer vous devez créer le classique html5: style.css script.js
 Inserer une div#boutton1 dans le html 
 un body{ black } dans le style css
-une constante button1 = get#boutton1 dans le script.js et un evenement au clique boutton1('click') avec une callback fonction qui contient le code pour jouer le fichier son.
+une constante button1 = get#boutton1 dans le script.js et un evenement boutton1('click') avec une callback fonction qui contient le code pour jouer le fichier son.
 
 Ensuite il faut créer une nouvelle variable let audio1 = new Audio(). new est un mot clé séciale en JS et Audio est un constructeur de classe intégré qui servira a créer une nouvelle instance de classe audio en JS qui créera un nouvel HTML vierge ce qui est pareille qu'écrire une balise audio html dans notre index.html. Cet objet peut etre attaché a une page Web pour que l'utilisateur puisse interAgir avec ou il peut simplement rester hors ecran. 
 
@@ -30,12 +30,56 @@ Rechercher sur google audioToBase64 pour convertir un fichier audio en base64
 
 Quand nous prenons notre objet audio1 le newaudio() créer un fichier audio en html vierge. 
 Et on définissait la source dans audio.src. 
-On pouvez en realité effacer le audio.src et envoyer le son directement dans l'objet new Audio('data:audio/x-wav;base64,maChaineBase64') ( Est ce que ça marche avec un URL ??? )
+On pouvez en realité effacer le audio.src et envoyer la chaine de caractere Base64 pour lier le son directement dans l'objet new Audio('data:audio/x-wav;base64,maChaineBase64')  ( Est ce que ça marche avec un URL ??? )
 
 
 V Généré du son avec la Web Api Audio
+Avec JS on peut générer du son par du code
+Les ajuster pour les faire sonner comme des instruments de musique. ça peut être utile pour les jeux video ou la génération de projet artistique.
+
+Pour générer du son nous devons créer un div#button2 dans html et une const button2 = get#button2 
+un evenement #button2(click, playSound) ou la fonction playSound{ audio1.play() }
+Pour generer du son nous allons utiliser la WebAudioApi() qui fonctionne sur un principe de nouedsAudio. 
+On vas commencer par un exemple simple. 
+On créer une constante audioCtx = new AudioContext();
+Pour generer du son j'entre dans la fonction playsound() pour y ajouter 
+{ const osciliattor = audio.ctx.createOscilliator(); // On créer un osciliateur que nous connectons
+  osciliator.connect(audioCtx.destination); // Nous connectons l'osciliateur au haut parleurs
+  osciliator.type = 'triangle'; // On envoie une onde de type traingle
+  osciliator start(); On joue le son 
+  setTieout(function(){
+      osciliator.stop();
+  }, 1000) // et on l'arrete au bout de 1000ms
+}
 
 VI JS Mettre en place un projet de visualiser audio
+
+On créer un  #container > canvas#canvas1 dans le html
+On créer également un audio#audio1 on supprime l'attribut source et on ajout le mot clé controls pour les rendre visible sur la page Web 
+Dans le style css je supprime le selecteur body et je met les regles :
+* { margin : 0; padding : 0; box-sizing: border-box; }
+#container { position: absolute; top: 0; left: 0; background: black; width : 100%; height: 100%; }
+... cf style.css
+Au inveau du JavaScript je garde seulement les 3 ligne de codes.
+let audio1 = newAudio(base64);
+const audioCtx = new AudioContext();
+console.log(audioCtx);
+Et j'ajoute : 
+
+const container =  get#container
+const canvas = get#canvas1 canvas est une element html spéciale qui créer un champs ou nous pouvons dessiné des formes animé interactives. Par default le canvas a une taille de 150 * 300 pixels.
+Donc si je veux que ma toile couvre la fenetre du navigateur, je dois définir la largeur et la hauteur de la de la toile avec 
+canvas.width = window.InnerWidth; 
+canvas.height = 
+
+Comme le canavs de l'API audio web de JS fonctionne comme un enssemble de methode et propriété intégré que les navigateur web peuvent comprendre. 
+'2D' and 'WebGL' API sont séparé et fonctionne de façon differentes. 
+Ici nous allons utilsé la methode de dessin 2D pour créer nos visualiseur.
+const ctx = canvas.getContext('2D');
+
+
+
+
 
 VII Visualisation des frequences sonore avec FFT
 
