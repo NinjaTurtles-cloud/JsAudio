@@ -64,6 +64,7 @@ Au inveau du JavaScript je garde seulement les 3 ligne de codes.
 let audio1 = newAudio(base64);
 const audioCtx = new AudioContext();
 console.log(audioCtx);
+
 Et j'ajoute : 
 
 const container =  get#container
@@ -77,11 +78,57 @@ Comme le canavs de l'API audio web de JS fonctionne comme un enssemble de method
 Ici nous allons utilsé la methode de dessin 2D pour créer nos visualiseur.
 const ctx = canvas.getContext('2D');
 
+Ensuite nous créons 2 variables que nous laissons vide : 
+let audioSource;
+let analyser;
 
+Maintenant créons un evenement simple pour que le son soit jouer quand on clique n'importe ou sur la page web. Pour cela nous allons créer un evenement au clique sur l'élement .container que nous avons déclaré car cet élement couvre la page entiere. Et nous y insérons une callBack fonction qui contient le code audio1.play(); 
 
+"Quelles est la difference entre webGL et 2D ?
 
 
 VII Visualisation des frequences sonore avec FFT
+
+Pour analyser et générer des forme qui bouge selon le son pour cela nous devons : 
+
+Prendre la variable audioSource précédément declarer et y intégrer = audioContext.createMediaElementSource(audio1) // Pour déclarer une source audio depuis la variable audio1 contenant le code base64 pour y créer un noeud audio en JS ( truc compliquer a voir ) 
+
+Ensuite je prend la variable analyser = audioContext.createAnalyseur(); // Pour exposer les donnée audio de temps de fréquences que nous utiliserons plus tard pour notre visualiseur.  
+
+Ensuite je connecte audioSource a analyser  pour exposer la synchronisation et les fréquence sur ce fichier sous forme d'objet de donnée.  
+
+Ensuite je connecte analyser avec audioCtx.destination (périphérique audio par default doncprobablement les hauts parleur du PC )
+
+Ensuite avec analyzer.fftSize une propriété spéciale qui reprensente le nombre d'échantillons audio que nous voulons dans notre fichier de donnée ( 248 est la valeur par default mais nous pouvons mettre une des ces valeurs 32, 64 .... 32768 ) Plus le nombre sera éleve plus nous aurons de bar qui analyse le son dessiner sur le canvas 
+
+Je créer une constante bufferLenght pour la mémoire tampon = analyser.frequencyBinCount; // Pour convertir dans un format spéciale
+( La valeur buffer.Lenght = la moitié de fftSize ) et il represente le nombre de bar 
+
+Ensuite je créer une variable dataArray = Uint8Array(bufferLenght) pour récupérer les donnée formaté envoyer par mon analyseur dans un type de tableau Uint8 ( Peut cotenir seulement des entier 8bits )
+
+
+
+
+
+
+
+
+
+VIII Bar visualiser on HTML Canvas 
+
+
+IX Chargé de long fichier audio dans le visualiseur 
+
+
+
+X Animer les couleur selon le son
+
+
+XI Visualiseur de cercle
+
+
+XII Expreience de coding creatif 
+
 
 Un super site pour trouver des ressources sonore visuelle 
 https://opengameart.org/
