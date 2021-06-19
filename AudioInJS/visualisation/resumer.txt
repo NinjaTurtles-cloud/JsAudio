@@ -124,9 +124,35 @@ Nous avons egalement besoin de la hauteur de la barre, avec une variable let ( c
 let barHeight; 
 Nous avons aussi besoin d'une variable x qui represente les coordonnée horizontale, a chaque fois que je dessinerai une barre je sauterai horizontalement de la largeur de la barre afin de desisner des barre les une a coté des autres.
 
+Pour animer la barre j'insère la fonction animate() qui augmentera la taille des barre quand les frequence changeront. Grace a un boucle d'animation. 
+D'abord je veux effacer le vieux canevas donc je prend la variable ctx et j'intègre la methode clearRect(0, 0, canvas.width, canvas.height) Cette methode prend 4 valeurs pour determiner la toile que nous voulons nettoyer. 
+La je veut tout effacer donc je commence aux coordonnées 0 0 et je prend la longeur et la hauteur du canvas. 
 
+Ensuite j'apelle la variable analyser et j'integre la methode getByteFrequencyData et je lui passe un tableau de donnée formaté. ( const dattaArray = new Uint8Array .... ) pour qu'il copie les donnée de fréquences. 
 
+Ensuite je créer une for loop avec le nombre de bufferLenght qui correspond a la moitié du fftSize et chaque entier est un element 8 bit non affeté c'est un nombre compris entre 0 et 225 ( ce nombre correspond au decibel de chaque frequence ) 
 
+Et dans cette for loop je prend la hauteur de la loop (barHeight) et je la rend égale au 8bit de la const dataArray (Des son fort represente des barres plus lngues ) barHeight = dataArray[i];
+
+Ensuite je definis les barre de couleur blanche 
+ctx.fillStyle = "white";
+Ensuite j'utilise la methode fillRectangle qui prend la largeur et la hauteur xy et dessine un rectangle sur le canvas
+ctx.fillRect(x, canvas.height - barHeight, barWidht, barHeight) = 
+
+Nous somme a l'interieur d'une boucle qui parcours l'enssemble du tableau de donnée, donc ce rectangle sera ecrit pour chaque point de donnée de fréquences. 
+x sera l'horizontale et la verticale sera la hauteur du canvas - la hauteur de la barre 
+
+Cette boucle créer 32 barre de son dont certaine peuvent mesurer 0 pixel si il n'y a pas de beaucoup de decibel
+
+Chaque fois que je dessine une barre je prend la variable x de la ligne 25 et je l'increment de la largeur de la barre cela mettra les barres les une a coté des autres horizontalement 
+x += barWidth 
+
+Et pour que les barre s'afiche je place dans mon evenement une const get#audio1 
+et audio1.src = codeBase64
+
+Ensuite je fait un requestAnimationFrame(animate) et je donne le nom de la fonction en argument
+
+Je verifie que let x se rinitialise a 0 a chaque fois que la boucle tourne
 
 
 
