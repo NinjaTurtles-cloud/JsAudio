@@ -11,7 +11,7 @@ container.addEventListener('click', function(){
 
     const audio1 = document.getElementById('audio1');
     
-    const audioContext = new AudioContext();
+    const audioContext = new AudioContext(); // Créer un contexte audio 
     audio1.play();
     audioSource = audioContext.createMediaElementSource(audio1);
     analyser = audioContext.createAnalyser();
@@ -26,7 +26,7 @@ container.addEventListener('click', function(){
     let x;
 
     function animate(){
-        x = 0;
+        x = 0;// Je ré initilise le x a 0 a chaque fois que la boucle for fait une boucle.
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         analyser.getByteFrequencyData(dataArray);
         drawVisualiser(bufferLength, x, barWidth, barHeight, dataArray);
@@ -56,7 +56,7 @@ file.addEventListener('change', function(){
     let x;
 
     function animate(){
-        x = 0;
+        x = 0; //Je re-initalise le x a 0 achaque fois 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         analyser.getByteFrequencyData(dataArray);
         drawVisualiser(bufferLength, x, barWidth, barHeight, dataArray);
