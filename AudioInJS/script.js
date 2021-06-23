@@ -15,7 +15,7 @@ button1.addEventListener('click', function(){
     });
 });
 
-const button2 = document.getElementById('button2');
+const button2 = document.getElementById('button2');// Le boutton2 sert a declencher un son générer par JS 
 button2.addEventListener('click', playSound); //Quand on clique sur le boutton 2 on active la fonction playsound
 function playSound(){ 
     const oscillator = audioCtx.createOscillator(); //On créer un oscilliateur

@@ -68,7 +68,7 @@ file.addEventListener('change', function(){
 });
 
 /* Instruction pour dessiner les barres   */
-function drawVisualiser(bufferLength, x, barWidth, barHeight, dataArray){
+function drawVisualiser(bufferLength, x, barWidth, barHeight, dataArray){ //
     for (let i = 0; i < bufferLength; i++){
         barHeight = dataArray[i];
         ctx.save();
